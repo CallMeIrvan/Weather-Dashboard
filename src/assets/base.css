@@ -1,0 +1,87 @@
+/* Modern Color Palette & Glassmorphism Variables */
+:root {
+  /* Core Colors */
+  --color-primary: #4f8df8;
+  --color-primary-dark: #3b82f6;
+  --color-secondary: #8b5cf6;
+  --color-accent: #f43f5e;
+
+  /* Base Text Colors (Abstracted) */
+  --text-white: #ffffff;
+  --text-white-muted: rgba(255, 255, 255, 0.7);
+  --text-dark: #1e293b;
+  --text-dark-muted: rgba(30, 41, 59, 0.7);
+
+  /* Glass Effects */
+  --glass-bg: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  --glass-blur: blur(12px);
+
+  /* Background Gradients */
+  --bg-gradient-light: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --bg-gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+/* Dark Mode (Default) */
+:root {
+  --color-background: #0f172a;
+  --color-text: var(--text-white);
+  --color-text-muted: var(--text-white-muted);
+}
+
+[data-theme='light'] {
+  --color-background: #f0f9ff;
+  --color-text: var(--text-dark);
+  --color-text-muted: var(--text-dark-muted);
+
+  /* Adjust glass for light mode to be visible but not too white */
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
+  --bg-gradient-light: linear-gradient(
+    120deg,
+    #e0c3fc 0%,
+    #8ec5fc 100%
+  ); /* Softer pastel gradient */
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--bg-gradient-dark); /* Default dark gradient */
+  background-attachment: fixed;
+  transition:
+    color 0.3s,
+    background 0.3s;
+  line-height: 1.6;
+  font-family:
+    'Outfit',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Fira Sans',
+    'Droid Sans',
+    'Helvetica Neue',
+    sans-serif;
+  font-size: 16px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[data-theme='light'] body {
+  background: var(--bg-gradient-light);
+}
