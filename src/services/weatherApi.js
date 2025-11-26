@@ -1,4 +1,4 @@
-const BASE_URL = '/owm'
+const BASE_URL = import.meta.env.PROD ? 'https://api.openweathermap.org' : '/owm'
 const API_KEY = import.meta.env.VITE_OWM_API_KEY
 
 function getApiKey() {

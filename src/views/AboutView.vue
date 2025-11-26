@@ -80,7 +80,7 @@ const langStore = useLanguageStore()
 }
 
 h1 {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
   background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
