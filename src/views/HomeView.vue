@@ -269,6 +269,9 @@ async function pickFavorite(name) {
 }
 
 @media (max-width: 640px) {
+  .home {
+    padding: 0 1rem;
+  }
   .hero-title {
     font-size: 2rem;
   }
@@ -277,6 +280,12 @@ async function pickFavorite(name) {
   }
   .btn-text {
     display: none;
+  }
+  .actions-toolbar {
+    gap: 0.5rem;
+  }
+  .action-btn {
+    padding: 0.5rem 0.8rem;
   }
 }
 </style>

@@ -130,4 +130,24 @@ function pickSuggestion(item) {
 .ws-suggest li:hover {
   background: var(--color-background-mute);
 }
+
+@media (max-width: 640px) {
+  .ws-form {
+    flex-wrap: wrap;
+  }
+
+  .ws-input {
+    min-width: 100%;
+    order: 1;
+  }
+
+  .ws-button {
+    flex: 1;
+    order: 2;
+  }
+
+  .ws-clear {
+    order: 3;
+  }
+}
 </style>
