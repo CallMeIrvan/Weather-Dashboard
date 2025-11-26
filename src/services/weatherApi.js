@@ -45,7 +45,9 @@ export async function fetchWeatherByCity(cityName, units = 'metric') {
     try {
       const data = await response.json()
       message = data?.message ? `(${response.status}) ${data.message}` : message
-    } catch {}
+    } catch {
+      // ignore JSON parse error
+    }
     throw new Error(message)
   }
   return response.json()
@@ -61,7 +63,9 @@ export async function fetchWeatherByCoords(latitude, longitude, units = 'metric'
     try {
       const data = await response.json()
       message = data?.message ? `(${response.status}) ${data.message}` : message
-    } catch {}
+    } catch {
+      // ignore JSON parse error
+    }
     throw new Error(message)
   }
   return response.json()

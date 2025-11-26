@@ -139,11 +139,12 @@ async function pickFavorite(name) {
 
 <style scoped>
 .home {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  padding: 0 2rem;
 }
 
 .hero-section {

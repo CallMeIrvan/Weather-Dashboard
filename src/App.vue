@@ -34,10 +34,10 @@ watchEffect(applyTheme)
       <nav class="nav">
         <RouterLink to="/" class="nav-link" active-class="active">{{
           langStore.t.nav.home
-        }}</RouterLink>
+          }}</RouterLink>
         <RouterLink to="/about" class="nav-link" active-class="active">{{
           langStore.t.nav.about
-        }}</RouterLink>
+          }}</RouterLink>
 
         <div class="divider"></div>
 
@@ -48,7 +48,7 @@ watchEffect(applyTheme)
         <button class="theme-btn glass-btn" @click="cycleTheme" aria-label="Toggle tema">
           <span class="theme-emoji">{{
             theme === 'dark' ? '🌙' : theme === 'light' ? '☀️' : '🌓'
-          }}</span>
+            }}</span>
         </button>
       </nav>
     </div>
@@ -63,31 +63,190 @@ watchEffect(applyTheme)
   </main>
 </template>
 
-.app-header { position: sticky; top: 1rem; z-index: 100; padding: 0.75rem 1.5rem; margin-bottom:
-2rem; border-radius: 100px; /* Pill shape */ } .header-content { display: flex; align-items: center;
-justify-content: space-between; } .brand-container { display: flex; align-items: center; gap:
-0.75rem; } .logo-bg { width: 40px; height: 40px; background: linear-gradient(135deg,
-var(--color-primary), var(--color-secondary)); border-radius: 50%; display: flex; align-items:
-center; justify-content: center; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); } .logo-emoji {
-font-size: 1.25rem; } .brand { font-size: 1.5rem; font-weight: 700; margin: 0; letter-spacing:
--0.5px; background: linear-gradient(to right, #fff, #cbd5e1); -webkit-background-clip: text;
--webkit-text-fill-color: transparent; } [data-theme='light'] .brand { background: linear-gradient(to
-right, #1e293b, #475569); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.brand-highlight { color: var(--color-primary); -webkit-text-fill-color: var(--color-primary); }
-.nav { display: flex; align-items: center; gap: 0.5rem; } .nav-link { padding: 0.5rem 1.25rem;
-border-radius: 100px; font-weight: 500; color: var(--color-text-muted); transition: all 0.3s ease;
-position: relative; } .nav-link:hover { color: var(--color-text); background: rgba(255, 255, 255,
-0.1); } [data-theme='light'] .nav-link:hover { background: rgba(0, 0, 0, 0.05); } .nav-link.active {
-color: #fff; background: var(--color-primary); box-shadow: 0 4px 12px rgba(79, 141, 248, 0.4); }
-.divider { width: 1px; height: 24px; background: var(--glass-border); margin: 0 0.5rem; } .theme-btn
-{ padding: 0.5rem; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items:
-center; justify-content: center; } .lang-flag { font-size: 1.2rem; } /* Page Transitions */
-.fade-enter-active, .fade-leave-active { transition: opacity 0.3s ease; } .fade-enter-from,
-.fade-leave-to { opacity: 0; } @media (max-width: 640px) { .app-header { top: 0.5rem; padding:
-0.5rem 1rem; margin-bottom: 1.5rem; border-radius: 20px; } .brand-container { gap: 0.5rem; }
-.logo-bg { width: 32px; height: 32px; } .logo-emoji { font-size: 1rem; } .brand { font-size: 1.1rem;
-display: none; /* Hide text on very small screens if needed, or keep it */ } /* Show brand on
-slightly larger mobile if space permits, or just keep icon */ @media (min-width: 380px) { .brand {
-display: block; } } .nav { gap: 0.25rem; } .nav-link { padding: 0.4rem 0.75rem; font-size: 0.85rem;
-} .divider { margin: 0 0.25rem; } .theme-btn { width: 32px; height: 32px; padding: 0.25rem; }
-.lang-flag, .theme-emoji { font-size: 1rem; } }
+<style scoped>
+.app-header {
+  position: sticky;
+  top: 1rem;
+  z-index: 100;
+  padding: 0.75rem 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 24px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.logo-bg {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo-emoji {
+  font-size: 1.25rem;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.5px;
+  background: linear-gradient(to right, #fff, #cbd5e1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme='light'] .brand {
+  background: linear-gradient(to right, #1e293b, #475569);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-highlight {
+  color: var(--color-primary);
+  -webkit-text-fill-color: var(--color-primary);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-link {
+  padding: 0.5rem 1.25rem;
+  border-radius: 100px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme='light'] .nav-link:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.nav-link.active {
+  color: #fff;
+  background: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(79, 141, 248, 0.4);
+}
+
+.divider {
+  width: 1px;
+  height: 24px;
+  background: var(--glass-border);
+  margin: 0 0.5rem;
+}
+
+.theme-btn {
+  padding: 0.5rem;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lang-flag {
+  font-size: 1.2rem;
+}
+
+/* Page Transitions */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+@media (max-width: 640px) {
+  .app-header {
+    top: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    margin-bottom: 1.5rem;
+    border-radius: 20px;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    width: auto;
+    max-width: none;
+  }
+
+  .brand-container {
+    gap: 0.5rem;
+  }
+
+  .logo-bg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .logo-emoji {
+    font-size: 1rem;
+  }
+
+  .brand {
+    display: none;
+  }
+
+  /* Show brand on larger mobile if space permits */
+  @media (min-width: 480px) {
+    .brand {
+      display: block;
+      font-size: 1.1rem;
+    }
+  }
+
+  .nav {
+    gap: 0.25rem;
+  }
+
+  .nav-link {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.85rem;
+  }
+
+  .divider {
+    margin: 0 0.25rem;
+  }
+
+  .theme-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0.25rem;
+  }
+
+  .lang-flag,
+  .theme-emoji {
+    font-size: 1rem;
+  }
+}
+</style>

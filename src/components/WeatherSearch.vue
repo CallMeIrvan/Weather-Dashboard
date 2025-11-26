@@ -79,14 +79,17 @@ function pickSuggestion(item) {
 }
 .ws-input {
   flex: 1;
-  min-width: 220px;
-  padding: 0.75rem 1rem;
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
+  min-width: 300px;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
   font-family: 'Space Grotesk', monospace;
-  font-size: 1rem;
+  font-size: 1.1rem;
   letter-spacing: -0.5px;
   transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text);
+  backdrop-filter: blur(4px);
 }
 
 .ws-input:focus {
@@ -109,7 +112,8 @@ function pickSuggestion(item) {
   background: var(--color-primary);
   color: #fff;
   border-color: var(--color-primary);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(79, 141, 248, 0.3);
 }
 .ws-clear {
   padding: 0.6rem 0.9rem;
